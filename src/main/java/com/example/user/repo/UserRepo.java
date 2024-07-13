@@ -20,6 +20,7 @@ public class UserRepo {
     }
 
     public User findByEmail(String email) {
+        @SuppressWarnings("deprecation")
         List<User> users = jdbcTemplate.query("SELECT * FROM users WHERE email = ?",
                 new Object[]{email}, new BeanPropertyRowMapper<>(User.class));
         return users.isEmpty() ? null : users.get(0);
